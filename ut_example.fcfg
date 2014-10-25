@@ -1,0 +1,10 @@
+% start S
+
+## Production Rules
+S[MOOD=dec] -> NP VP
+NP -> N
+VP -> V NP
+
+## Lexicon
+N -> 'I' | 'cats'
+V -> 'love'

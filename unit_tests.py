@@ -3,7 +3,7 @@ from nltk.parse import earleychart
 import os, unittest
 
 class SuperParser:
-    def __init__(self, local_parse_trace_level=2):
+    def __init__(self):
         self.my_gram = nltk.data.load('file:ut_example.fcfg')
         self.earl = earleychart.FeatureEarleyChartParser(self.my_gram)
 
@@ -16,7 +16,7 @@ class SuperParser:
    
 class TheTests(unittest.TestCase):
     def setUp(self):
-        self.class_under_test = SuperParser(0)
+        self.class_under_test = SuperParser()
 
     def test_my_first_test(self):
         result = self.class_under_test.parse("I love cats")

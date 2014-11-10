@@ -40,6 +40,13 @@ class TheTests(unittest.TestCase):
         label_str = str(label)
         self.assertEqual(self.get_non_terminal_label(label_str), 'S')
 
+    def get_the_feature_i_hope_there_is_only_one(self, label):
+        for item in label:
+            if isinstance(item, nltk.featstruct.Feature):
+                return item
+
+        return None
+
     #Convoluted example, but good enough?
     def get_non_terminal_label(self, line):
         # regex matches the line 

@@ -1,7 +1,7 @@
 % start S
 
 ## Production Rules
-S[MOOD=dec] -> NP VP
+S[MOOD=dec, AGR='bob', FACTOR='fun'] -> NP VP
 NP -> N
 VP -> V NP
 

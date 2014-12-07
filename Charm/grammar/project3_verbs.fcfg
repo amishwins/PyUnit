@@ -1,0 +1,118 @@
+# Project 3, REDONE oh god
+
+% start S
+
+# simple tests:
+# it could be better
+# it could be worse
+# it could have been better
+# it could have been worse
+# the movie should have been better
+S[+CONDITIONAL, TENSE=?t, FORM=?f, ORIENTATION=?o] -> NP[AGR=?a] VP[+CONDITIONAL, TENSE=?t, FORM=?f, AGR=?a, ORIENTATION=?o]
+
+# harder tests:
+# what could be better is worse
+# what could be better is better
+# what could be worse is better
+# what could be worse is worse
+S[+CONDITIONAL, TENSE=?t, FORM=?f, ORIENTATION=?o1, ORIENTATION2=?o2] -> SBAR[+CONDITIONAL, TENSE=?t, FORM=?f, ORIENTATION=?o1] VP[-CONDITIONAL, ORIENTATION2=?o2]
+
+# okay last one, then i'm done
+# it could have been better but it was worse
+S[+CONDITIONAL, TENSE=?t, FORM=?f, ORIENTATION=?o1, ORIENTATION2=?o2] -> NP[AGR=?a] VP[+CONDITIONAL, TENSE=?t, FORM=?f, AGR=?a, ORIENTATION=?o1] SBAR[-CONDITIONAL, TENSE=?t2, FORM=?f2, ORIENTATION=?o2, +BUT]
+
+######################################
+#              SBARs                 #
+######################################
+# what + conditional
+SBAR[+CONDITIONAL, TENSE=?t, FORM=?f, ORIENTATION=?o] -> WP[+WHAT] VP[+CONDITIONAL, TENSE=?t, FORM=?f, AGR=?a, ORIENTATION=?o]
+
+# but + NP VP
+SBAR[-CONDITIONAL, TENSE=?t, FORM=?f, ORIENTATION=?o, +BUT] -> CONJ[+BUT] NP[AGR=?a] VP[-CONDITIONAL, TENSE=?t, FORM=?f, AGR=?a, ORIENTATION2=?o]
+
+
+######################################
+#                NPs                 #
+######################################
+NP[AGR=?a] -> PRON[AGR=?a]
+NP[AGR=?a] -> ART[AGR=?a] N[AGR=?a]
+
+######################################
+#                VPs                 #
+######################################
+#VP[+CONDITIONAL, TENSE=?t, ORIENTATION=?o] -> VP[+CONDITIONAL, TENSE=?t] ADVP[ORIENTATION=?o]
+VP[+CONDITIONAL, TENSE=?t, FORM=?f, ORIENTATION=?o] -> VP[+CONDITIONAL, TENSE=?t, FORM=?f] ADVP[ORIENTATION=?o]
+
+# At the moment I only care about "could, should, might, would"
+# .. e.g. could be
+VP[+CONDITIONAL, TENSE=pres, FORM=simple] -> V[TENSE=past, +AUX, +MODAL] V[FORM=base, +AUX]
+
+# .. e.g. could have been
+VP[+CONDITIONAL, TENSE=past, FORM=perfect] -> V[TENSE=past, +AUX, +MODAL] V[FORM=base, +AUX] V[FORM=participle, TENSE=past, -AUX, -MODAL]
+
+# .. e.g. is worse
+VP[-CONDITIONAL, ORIENTATION2=?o, AGR=?a] -> V[TENSE=?t, AGR=?a] ADVP[ORIENTATION=?o]
+
+######################################
+#              ADVPs                 #
+######################################
+ADVP[ORIENTATION=?o] -> ADV[ORIENTATION=?o]
+
+######################################
+#              Nouns                 #
+######################################
+PRON[AGR=[PER=1, NUM=sg]] -> 'I'
+PRON[AGR=[PER=2, NUM=sg]] -> 'you'
+PRON[AGR=[PER=3, NUM=sg]] -> 'he' | 'she' | 'it'
+PRON[AGR=[PER=1, NUM=pl]] -> 'we'
+PRON[AGR=[PER=2, NUM=pl]] -> 'you'
+PRON[AGR=[PER=3, NUM=pl]] -> 'they'
+
+# Relative pronoun for introducing relative clauses
+WP[+WHAT] -> 'what'
+
+N[AGR=[NUM=sg]] -> 'movie'
+N[AGR=[NUM=pl]] -> 'movies'
+
+######################################
+#              Verbs                 #
+######################################
+# works for all 6 AGR
+V[TENSE=pres, +AUX, +MODAL] -> 'can' | 'may' | 'shall' | 'will'
+V[TENSE=past, +AUX, +MODAL] -> 'could' | 'might' | 'should' | 'would'
+
+V[TENSE=pres, -AUX, -MODAL, AGR=[PER=1, NUM=sg]] -> 'am' | 'have' | 'walk'
+V[TENSE=pres, -AUX, -MODAL, AGR=[PER=2, NUM=sg]] -> 'are' | 'have' | 'walk'
+V[TENSE=pres, -AUX, -MODAL, AGR=[PER=3, NUM=sg]] -> 'is' | 'has' | 'walks'
+V[TENSE=pres, -AUX, -MODAL, AGR=[NUM=pl]] -> 'are' | 'have' | 'walk'
+
+V[TENSE=past, -AUX, -MODAL, AGR=[PER=1, NUM=sg]] -> 'was' | 'had' | 'walked'
+V[TENSE=past, -AUX, -MODAL, AGR=[PER=2, NUM=sg]] -> 'were' | 'had' | 'walked'
+V[TENSE=past, -AUX, -MODAL, AGR=[PER=3, NUM=sg]] -> 'was' | 'had' | 'walked'
+V[TENSE=past, -AUX, -MODAL, AGR=[NUM=pl]] -> 'were' | 'had' | 'walked'
+
+V[FORM=participle, TENSE=pres, -AUX, -MODAL] -> 'walking' | 'flying' | 'being'
+V[FORM=participle, TENSE=past, -AUX, -MODAL] -> 'walked' | 'flew' | 'been'
+
+# I don't know about this :(
+V[FORM=base, +AUX] -> 'be' | 'have'
+
+######################################
+#              Adverbs               #
+######################################
+ADV[ORIENTATION=good] -> 'better'
+ADV[ORIENTATION=bad] -> 'worse' 
+
+
+######################################
+#              Article               #
+######################################
+ART[AGR=[NUM=sg]] -> 'a'
+ART[AGR=[NUM=pl]] -> 'these'
+ART[] -> 'the'
+
+######################################
+#            Conjunctions            #
+######################################
+CONJ[+BUT] -> 'but'
+

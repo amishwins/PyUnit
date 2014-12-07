@@ -1,0 +1,17 @@
+SentID	Original_file	AFINN	AFINN Match Gold	ModalPrediction	Modal Match Gold	Modals	# of modals	Pos	Neg	Sentence
+1	n	1.0	False	n	True	{'could': 1}	1	[['better', 2]]	[]	it could be better
+2	p	-1.5	False	p	True	{'could': 1}	1	[]	[['worse', -3]]	it could be worse
+3	n	0.89443	False	n	True	{'should': 1}	1	[['better', 2]]	[]	it should have been better
+4	p	-1.34164	False	p	True	{'might': 1}	1	[]	[['worse', -3]]	it might have been worse
+5	n	0.8165	False	n	True	{'should': 1}	1	[['better', 2]]	[]	the movie should have been better
+6	n	-0.40825	True	n	True	{'might': 1}	1	[['better', 2]]	[['worse', -3]]	what might be better is worse
+7	p	1.63299	True	p	True	{'could': 1}	1	[['better', 2], ['better', 2]]	[]	what could be better is better
+8	p	-0.40825	False	p	True	{'should': 1}	1	[['better', 2]]	[['worse', -3]]	what should be worse is better
+9	n	-2.44949	True	n	True	{'would': 1}	1	[]	[['worse', -3], ['worse', -3]]	what would be worse is worse
+10	n	-0.33333	True	n	True	{'might': 1}	1	[['better', 2]]	[['worse', -3]]	it might have been better but it was worse
+11	n	-2.0	True	n	True	{'could': 1}	1	[]	[['worse', -3], ['worse', -3]]	it could have been worse but it was worse
+12	p	-0.33333	False	p	True	{'should': 1}	1	[['better', 2]]	[['worse', -3]]	it should have been worse but it was better
+13	p	1.33333	True	p	True	{'would': 1}	1	[['better', 2], ['better', 2]]	[]	it would have been better but it was better
+14	n	-1.5	True	-- no modals --	False	{}	0	[]	[['hated', -3]]	bob hated the movie
+15	n	-5.19615	True	-- no modals --	False	{}	0	[]	[['worse', -3], ['worse', -3], ['worse', -3]]	worse worse worse
+16	n	-2.68328	True	** not parsed **	False	{'could': 1}	1	[]	[['worse', -3], ['worse', -3]]	worse could have been worse
